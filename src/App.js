@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+const data = [
+  { name: "samir", age: 12 },
+  { name: "shrestha", age: 14 },
+  { name: "shankar", age: 15 },
+  { name: "shiva", age: 16 },
+];
 
-function App() {
+const App = () => {
+  const [demoData, setDemoData] = useState(data);
+  const changeData = (age) => {
+    //set option selected according to given age
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <select>
+        {demoData.map((d) => {
+          return (
+            <option key={d.age} value={d.age}>
+              {d.name}
+            </option>
+          );
+        })}
+      </select>
+
+      <button onClick={() => changeData(15)}>Click me</button>
     </div>
   );
-}
+};
 
 export default App;
